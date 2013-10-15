@@ -1,0 +1,13 @@
+<div id="admin_page">
+	<h2 class="beta"><%= @sub_title %></h2>
+
+	<%= erb :'admin/admin_nav' %>
+	
+	<div id="admin_content">
+		<h3 class="gamma">Users - <%= @user.username %></h3>
+		<%= erb :'admin/users/user_posts' %>
+		<%= erb :'admin/users/edit_user_form' %>
+	</div>
+
+</div>
+

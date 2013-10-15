@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'shotgun'
+gem 'sinatra'
+gem 'sinatra-flash', require: 'sinatra/flash'
+gem 'bcrypt-ruby', require: 'bcrypt'
+gem 'data_mapper'
+gem 'dm-types'
+gem 'dm-sqlite-adapter'
+gem 'warden'

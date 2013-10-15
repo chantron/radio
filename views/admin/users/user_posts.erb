@@ -1,0 +1,19 @@
+<div id="user_posts">
+	<h4 class="delta">Posts</h4>
+	<% if @user.posts.count >= 1 %>
+		<p><%= "#{@user.username} has @user.posts.count posts." %></p>
+		<ul>
+			<% @user.posts.each do | post | %>
+
+				<li><%= post.title %></li>				
+
+			<% end %>
+		</ul>
+		<h4 class="delta">Edit</h4>
+
+	<% else %>
+
+		<p>The user does not have any posts</p>
+
+	<% end %>
+</div>

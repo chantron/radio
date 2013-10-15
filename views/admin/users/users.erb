@@ -1,0 +1,12 @@
+<div id="admin_page">
+	<h2 class="beta"><%= @sub_title %></h2>
+	
+	<%= erb :'admin/admin_nav' %>
+	
+	<div id="admin_content">
+		<h3>All Users</h3>
+		<%= erb :'admin/users/user_list' %>
+		<%= erb :'admin/users/new_user_form' %>
+	</div>
+
+</div>

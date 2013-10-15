@@ -1,0 +1,18 @@
+<div id="admin_page">
+	<h2><%= @sub_title %></h2>
+
+	<%= erb :'/admin/admin_nav' %>
+	
+	<div id="admin_content">
+		<% @pages.each do | page | %>
+			<h3><%= page.title %></h3>
+
+			<% @pages.posts.each do | post | %>
+				
+				<h4><%= post.title %></h4>
+
+			<% end %>
+		<% end %>
+	</div>
+
+</div>
