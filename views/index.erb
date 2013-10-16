@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="row">
+				<h3>Shows</h3>
+				<% @shows.each do | show | %>
+
+				<h4><%= show.title %></h4>
+				<p><%= show.description %></p>
+
+				<% end %>
+				</div>
+				<div class="row">
+					<h3>DJ's</h3>
+					<% @djs.each do | dj | %>
+						
+						<h5><%= dj.name %></h5>
+						<p><%= dj.bio %></p>
+
+						<h6><%= dj.name %> hosts:</h6>
+						<ul>
+						<% if !dj.shows.nil? %>
+							<% dj.shows.each do | dj_show | %>
+								
+								<li><%= dj_show.title %></li>
+							<% end %>
+						<% else %>
+							<p>No current shows</p>
+						<% end %>
+						</ul>
+
+					<% end %>
+				</div>
+			</div>
+			<div class="col-md-9">
+				
+			</div>
+		</div>
+	</div>
+</div>

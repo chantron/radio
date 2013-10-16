@@ -18,10 +18,6 @@ module Helpers
 
   end
 
-  def admin_page
-
-  end
-
   def success?
 
    if @user.saved? == true

@@ -11,6 +11,11 @@ require './helpers'
 #DataMapper::Model.raise_on_save_failure = true
 
 class LowPowerRadio < Sinatra::Base
+
+  Site = SiteOptions.first()
+
+  Site_title = Site.name
+
   register Sinatra::Flash
 
   # Set the helpers to the helper Module
@@ -87,6 +92,11 @@ class LowPowerRadio < Sinatra::Base
   get '/' do
     @title = "LPFM Radio Framework"
 
+    @shows = Show.all
+
+    @djs = Dj.all
+
+    @posts = Post.all
 
     erb :index
   end
