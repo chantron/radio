@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><%= Site_title %></a>
+      <a class="navbar-brand" href="/"><%= Site_title %></a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -16,9 +16,9 @@
 	  <ul class="dropdown-menu">
 	  		<li class="dropdown-header">All Shows</li>
 	  		<li class="divider"></li>
-	  		<% Show.all( :order => [ :title.desc ]).each do | show | %>
+	  		<% Show.all( :order => [ :title.asc ]).each do | show | %>
 			
-				<li><a href="shows/<%= show.id %>"><%= show.title %></a></li>
+				<li><a href="/shows/<%= show.id %>"><%= show.title %></a></li>
 
 			<% end %>
 			</ul>

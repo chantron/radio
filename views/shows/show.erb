@@ -1,0 +1,36 @@
+<div class="show jumbotron">
+	<div class="container">
+		<h1><%= @show.title %></h1>
+		<p><%= @show.blurb %></p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2">
+		<div class="row">
+		<h3>Twitter</h3>
+		</div>
+	</div>
+	<div class="col-md-10">
+		<div class="row">
+			<div class="page-header">
+			<h1><%= @show.title %>
+			<small><%= @show.description %></small>
+			</h1>
+			</div>
+		</div>
+		<div class="row">
+			<h2>Schedule</h2>
+		</div>
+
+		<div class="row">
+		<% @show.playlists.each do | playlist | %>
+			<h3>Playlist for <%= playlist.date %></h3>
+			<ul>
+			<% play.songs.each do | song | %>
+				<li><h4><%= song.artist %> - <%= song.title %></h4>
+			<% end %>
+			</ul>
+		<% end %>
+		</div>
+	</div>
+</div>

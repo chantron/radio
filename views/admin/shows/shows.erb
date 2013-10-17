@@ -1,0 +1,14 @@
+<div id="admin_page_shows" class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-2">
+				<%= erb :'/admin/admin_nav' %>
+			</div>
+			<div class="col-md-10">
+				<h2><%= @sub_title %></h2>
+				<% @shows.each do | show | %>
+				<h3><a href="/admin/shows/edit/<%= show.id %>"><%= show.title %></a></h3>
+				<% end %>
+			</div>
+	</div>
+</div>

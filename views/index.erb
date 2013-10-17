@@ -1,13 +1,13 @@
-<div class="row">
+<div id="home_page" class="row">
 	<div class="col-md-12">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<div class="row">
 				<h3>Shows</h3>
 				<% @shows.each do | show | %>
 
-				<h4><%= show.title %></h4>
-				<p><%= show.description %></p>
+				<h4><a href="/shows/<%= show.id %>"><%= show.title %></a></h4>
+				<p><%= show.blurb %></p>
 
 				<% end %>
 				</div>
@@ -33,7 +33,7 @@
 					<% end %>
 				</div>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-10">
 				<div class="row"></div>
 				
 				<div class="row">
@@ -54,8 +54,8 @@
 
 						<div class="post post_<%= post.id %>">
 							<h2><%= post.title %></h2>
-							<span class="post_meta">Posted by <%= post.user.name %> on <%= post.create_at %></span>
-							<p>%<= post.content %></p>
+							<span class="post_meta">Posted by <%= post.user.name %> on <%= post.created_at %></span>
+							<p><%= post.content %></p>
 						</div>
 
 						<% end %>

@@ -85,6 +85,7 @@ class Show
   property :date, DateTime
   property :filepath, FilePath
   property :description, Text
+  property :blurb, Text, :length => 10..250
 
   has n, :playlists
   belongs_to :dj, :required => false
@@ -96,9 +97,16 @@ class Playlist
   include DataMapper::Resource
 
   property :id, Serial
+  property :date, DateTime
+  property :created_at, DateTime
 
   has n, :songs
   belongs_to :show, :required => false
+
+  def date_format
+
+
+  end
 
 end
 
@@ -121,6 +129,7 @@ class Post
   include DataMapper::Resource
   
   property :id, Serial
+  property :title, Text
   property :content, Text
   property :created_at, DateTime
   property :updated_at, DateTime

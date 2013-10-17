@@ -101,6 +101,17 @@ class LowPowerRadio < Sinatra::Base
     erb :index
   end
 
+  get '/shows/:id/?' do
+
+    @show = Show.get(params[:id])
+
+    erb :'shows/show'
+
+  end
+
+
+  ### Admin Routes
+
   get '/admin/' do
 
     @title = "Admin"
@@ -110,7 +121,7 @@ class LowPowerRadio < Sinatra::Base
 
   end
 
-  ### Admin Routes
+  
 
   get '/admin/users' do
 
@@ -148,7 +159,7 @@ class LowPowerRadio < Sinatra::Base
   end
 
   ##### Create New User
-  post '/admin/user/new' do
+  post '/admin/user/new?' do
 
     @user = User.create( username: params[:username])
     @user.password = params[:password]
@@ -160,6 +171,112 @@ class LowPowerRadio < Sinatra::Base
     redirect "/admin/user/edit/#{@id}"
 
   end
+
+  #### Admin Show Routes
+  ##### Show all shows
+
+  get '/admin/shows/?' do
+
+    @sub_title = "All Shows"
+    @shows = Show.all
+
+    erb :'/admin/shows/shows'
+
+  end
+  ##### Create New Show
+
+  get '/admin/shows/new/?' do
+
+    erb :'admin/shows/new_show'
+
+  end
+
+  post '/admin/shows/new/?' do
+
+    @show = Show.create( 
+      title: params['show']['title'],
+      description: params['show']['description'],
+      blurb: params['show']['blurb'],
+      dj: Dj.get(params['dj']['id'])
+    )
+
+    show_save?
+
+  end
+
+  ##### Edit Show
+
+  get '/admin/shows/edit/:id/?' do
+    @show = Show.get( params[:id] )
+
+    erb :'admin/shows/edit_show'
+
+  end
+
+  post '/admin/shows/edit/:id/?' do
+
+    @show = Show.get(params[:id])
+
+    @show.update( 
+      title: params['show']['title'],
+      description: params['show']['description'],
+      blurb: params['show']['blurb'],
+      dj: Dj.get(params['dj']['id'])
+    )
+
+  end
+
+  #### Admin Blog Post Routes
+  get '/admin/posts/?' do
+
+    @posts = Post.all
+
+    erb :'admin/posts/posts'
+
+  end
+
+  get '/admin/posts/new/?' do
+
+    erb :'admin/posts/new_post'
+
+  end
+
+  post '/admin/posts/new/?' do
+
+    @post = Post.create(
+      title: params['post']['title'],
+      content: params['post']['content'],
+      user: User.get(params['user']['id']),
+      created_at: Time.now
+    )
+
+    post_save?
+
+  end
+
+  get '/admin/posts/edit/:id/?' do
+
+    @post = Post.get(params[:id])
+
+    erb :'admin/posts/edit_post'
+
+  end
+
+  post '/admin/posts/edit/:id/?' do
+
+    @post = Post.get(params[:id])
+
+    @post.update(
+      title: params['post']['title'],
+      content: params['post']['content'],
+      user: User.get(params['user']['id']),
+      updated_at: Time.now
+    )
+    
+    post_save?
+
+  end
+
 
 
   ## Authentication Routes
