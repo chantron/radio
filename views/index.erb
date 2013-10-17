@@ -34,7 +34,35 @@
 				</div>
 			</div>
 			<div class="col-md-9">
+				<div class="row"></div>
 				
+				<div class="row">
+					<h1>Latest Posts</h1>
+				</div>
+				<div class="row">
+
+				<% if @posts.count == 0 %>
+
+						<div class="post">
+							<h2>No posts found!</h2>
+							<p>Whoops!</p>
+						</div>
+
+					<% else %>
+
+						<% @posts.each do | post | %>
+
+						<div class="post post_<%= post.id %>">
+							<h2><%= post.title %></h2>
+							<span class="post_meta">Posted by <%= post.user.name %> on <%= post.create_at %></span>
+							<p>%<= post.content %></p>
+						</div>
+
+						<% end %>
+
+					<% end %>
+
+				</div>
 			</div>
 		</div>
 	</div>

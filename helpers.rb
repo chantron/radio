@@ -6,9 +6,7 @@ module Helpers
 
     if env['warden'].authenticated?
 
-      @username = env['warden'].user.username
-
-      @message = "Hello #{@username}. <a href=/auth/logout>Logout?</a>"
+      erb :logout_box
 
     else
 
@@ -18,23 +16,42 @@ module Helpers
 
   end
 
+  def admin_links?
+
+    @admin_role = Role.get(1)
+
+    if env['warden'].authenticated? && env['warden'].user.roles.include?(@admin_role)
+
+      erb :'/admin/admin_links'
+
+    end
+
+  end
+
   def success?
 
-   if @user.saved? == true
+    if @user.saved? == true
 
-    flash[:success] = "#{@user.username} has been updated."
+      flash[:success] = "#{@user.username} has been updated."
 
-  elsif @user.saved? == false
+    elsif @user.saved? == false
 
-    flash[:error] = "#{@user.username} failed to update."
+      flash[:error] = "#{@user.username} failed to update."
 
-  else
+    else
 
-    flash[:error] = "Something went wrong."
+      flash[:error] = "Something went wrong."
+
+    end
 
   end
 
-
+  def extra_info?
+    extra_info = true
+    if extra_info == true
+      erb :extra_info
+    end
   end
+
 
 end

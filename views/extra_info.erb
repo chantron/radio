@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="alert alert-dismissable alert-warning">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<strong>Debug stuff</strong>
+		<% env['warden'].user.attributes.each do | key, value | %>
+			<p>
+			<%= key %> - 
+			<%= value %>
+			</p>
+		<% end %>
+		<% if env['warden'].user.roles.nil? %>
+			<p>No Roles.</p>
+
+		<% else %>
+			<p>Roles: 
+			<% env['warden'].user.roles.each do | role | %>
+				<%= role.title %>,
+			<% end %>
+			</p>
+		<% end %>
+	</div>
+</div>

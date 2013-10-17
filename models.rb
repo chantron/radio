@@ -8,6 +8,8 @@ class SiteOptions
   property :id, Serial
   property :name, Text
   property :about, Text
+  property :tagline, Text
+  property :admin, String
 
 end
 
@@ -28,6 +30,7 @@ class User
   # associations
   # has n, :images
   has n, :roles, :through => DataMapper::Resource
+  has n, :posts
 
   def name
 
@@ -118,6 +121,10 @@ class Post
   include DataMapper::Resource
   
   property :id, Serial
+  property :content, Text
+  property :created_at, DateTime
+  property :updated_at, DateTime
+  belongs_to :user, :required => false
 
 end
 
@@ -155,6 +162,18 @@ if User.count == 0
     email: "admin@something.com",
     password: "test"
   )
+
+end
+
+if Role.count == 0 
+
+  @role = Role.create(
+    title: "admin",
+    description: "Top level admin."
+  )
+  @role = Role.get(1)
+  @user = User.get(1)
+  @user.roles << @role
 
 end
 
