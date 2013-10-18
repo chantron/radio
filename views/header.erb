@@ -30,7 +30,7 @@
       </ul>
 		<ul class="nav navbar-nav navbar-right">
 		<%= admin_links? %>
-		<li><a href="#">Hello <%= env['warden'].user.username %></a></li>
+		<li><% if !env['warden'].user.nil? %><a href="#">Hello <%= env['warden'].user.username %><% end %></a></li>
 		<%= login_box %>
 		
 		</ul>
