@@ -1,0 +1,21 @@
+<form action="/admin/options/site_options" method="post">
+
+	<div class="form-group">
+		<label for="post_title">Site Name</label>
+		<input type="text" class="form-control" id="post_title" name="site[name]" placeholder="New Post's Title" />
+	</div>
+
+	<div class="form-group">
+		<label for="post_title">Site Tagline</label>
+		<input type="text" class="form-control" id="post_title" tagline="site[tagline]" placeholder="New Post's Title" />
+	</div>
+
+	<div class="form-group">
+		<label for="post_contents">Site About</label>
+		<textarea class="form-control" id="post_content" name="site[about]" rows="3" placeholder="Enter Post Content"></textarea>
+	</div>s
+	
+	<div class="form-group">
+		<button class="btn btn-primary" type="submit">Update Site Options</button>
+	</div>
+</form>

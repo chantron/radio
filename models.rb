@@ -10,6 +10,12 @@ class SiteOptions
   property :about, Text
   property :tagline, Text
   property :admin, String
+  property :address1, String
+  property :address2, String
+  property :city, String
+  property :state, String, :length => 2
+  property :zip, String
+  #property :logo, 
 
 end
 
@@ -88,9 +94,29 @@ class Show
   property :blurb, Text, :length => 10..250
 
   has n, :playlists
+  #has 1, :schedule
   belongs_to :dj, :required => false
 
 end
+
+# class Schedule
+
+#   include Datamapper::Resource
+
+#   property :id
+#   property :sunday, Boolean
+#   property :monday, Boolean
+#   property :tuesday, Boolean
+#   property :wednesday, Boolean
+#   property :thursday, Boolean
+#   property :friday, Boolean
+#   property :saturday, Boolean
+#   property :start_time, Time
+#   property :end_time, Time
+
+#   belongs_to :show, :required => false
+
+# end
 
 class Playlist
 
